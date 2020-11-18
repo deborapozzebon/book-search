@@ -34,9 +34,8 @@ class Books extends React.Component {
                         <div className="col-sm">
                             {this.props.books.map((book, i) => {
                                 return (
-                                    <a href="#" cass="thumbnail" className="bk-thumb">
+                                    <a cass="thumbnail" className="bk-thumb" onClick={(event) => this.handlerOpenModal(event, book)}>
                                         <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title} />
-                                        <button onClick={(event) => this.handlerOpenModal(event, book)} />
                                     </a>
                                 )
                             })}
@@ -44,10 +43,12 @@ class Books extends React.Component {
                     </div>
                     <Modal show={this.state.isModalOpen} onHide={this.handlerCloseModal}>
                         <ModalHeader>
-                        <ModalTitle>{this.state.bookToDisplayMoreInformation?.volumeInfo?.title}</ModalTitle>
+                            <ModalTitle>{this.state.bookToDisplayMoreInformation?.volumeInfo?.title}</ModalTitle>
                         </ModalHeader>
                         <ModalBody>{this.state.bookToDisplayMoreInformation?.volumeInfo?.description}</ModalBody>
-                        <ModalFooter>This is the footer</ModalFooter>
+                        <ModalFooter>
+                            <button type="button" class="btn btn-primary" onClick={this.handlerCloseModal}>Close</button>
+                        </ModalFooter>
                     </Modal>
                 </React.Fragment>
             )

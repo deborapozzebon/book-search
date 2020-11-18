@@ -17,13 +17,48 @@ class Books extends React.Component {
 
         this.handlerOpenModal = this.handlerOpenModal.bind(this);
         this.handlerCloseModal = this.handlerCloseModal.bind(this);
+        this.handlerAddToFavorites = this.handlerAddToFavorites.bind(this);
+        this.renderModalFooter = this.renderModalFooter.bind(this);
+        this.handlerRemoveFromFavorites = this.handlerRemoveFromFavorites.bind(this);
     }
 
     handlerOpenModal(event, book) {
         this.setState({ isModalOpen: true, bookToDisplayMoreInformation: book });
     }
+
     handlerCloseModal(event, book) {
         this.setState({ isModalOpen: false, bookToDisplayMoreInformation: null });
+    }
+
+    handlerAddToFavorites(event) {
+        if (this.state.bookToDisplayMoreInformation !== null && this.state.bookToDisplayMoreInformation !== undefined && this.state.bookToDisplayMoreInformation !== '') {
+            this.props?.favorites(this.state.bookToDisplayMoreInformation);
+        }
+    }
+
+    handlerRemoveFromFavorites(event) {
+        if (this.state.bookToDisplayMoreInformation !== null && this.state.bookToDisplayMoreInformation !== undefined && this.state.bookToDisplayMoreInformation !== '') {
+            this.props?.removeFavorite(this.state.bookToDisplayMoreInformation);
+        }
+    }
+
+    renderModalFooter() {
+        if (this.props?.isFavoriteContext) {
+            return(
+                <React.Fragment>
+                    <button type="button" class="btn btn-primary" onClick={this.handlerRemoveFromFavorites}>Remove from favorites</button>
+                    <button type="button" class="btn btn-primary" onClick={this.handlerCloseModal}>Close</button>
+                </React.Fragment>
+            )
+        }
+        else {
+            return (
+                <React.Fragment>
+                    <button type="button" class="btn btn-primary" onClick={this.handlerAddToFavorites}>Save to favorite</button>
+                    <button type="button" class="btn btn-primary" onClick={this.handlerCloseModal}>Close</button>
+                </React.Fragment>
+            )
+        }
     }
 
     render() {
@@ -34,7 +69,7 @@ class Books extends React.Component {
                         <div className="col-sm">
                             {this.props.books.map((book, i) => {
                                 return (
-                                    <a cass="thumbnail" className="bk-thumb" onClick={(event) => this.handlerOpenModal(event, book)}>
+                                    <a class="thumbnail" className="bk-thumb" onClick={(event) => this.handlerOpenModal(event, book)}>
                                         <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title} />
                                     </a>
                                 )
@@ -47,7 +82,7 @@ class Books extends React.Component {
                         </ModalHeader>
                         <ModalBody>{this.state.bookToDisplayMoreInformation?.volumeInfo?.description}</ModalBody>
                         <ModalFooter>
-                            <button type="button" class="btn btn-primary" onClick={this.handlerCloseModal}>Close</button>
+                            {this.renderModalFooter()}
                         </ModalFooter>
                     </Modal>
                 </React.Fragment>

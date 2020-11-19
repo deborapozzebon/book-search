@@ -44,7 +44,7 @@ class Books extends React.Component {
 
     renderModalFooter() {
         if (this.props?.isFavoriteContext) {
-            return(
+            return (
                 <React.Fragment>
                     <button type="button" class="btn btn-primary" onClick={this.handlerRemoveFromFavorites}>Remove from favorites</button>
                     <button type="button" class="btn btn-primary" onClick={this.handlerCloseModal}>Close</button>
@@ -76,7 +76,7 @@ class Books extends React.Component {
                             })}
                         </div>
                     </div>
-                    <Modal show={this.state.isModalOpen} onHide={this.handlerCloseModal}>
+                    <Modal show={this.state.isModalOpen} onHide={this.handlerCloseModal} centered>
                         <ModalHeader>
                             <ModalTitle>{this.state.bookToDisplayMoreInformation?.volumeInfo?.title}</ModalTitle>
                         </ModalHeader>

@@ -1,9 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import Books from './books/books.js'
+import Books from './books/books.js';
 import ReactPaginate from 'react-paginate';
 import { NavbarBrand, Navbar, NavLink, Nav } from 'react-bootstrap';
+import Toast from 'react-bootstrap/Toast';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +19,10 @@ class App extends React.Component {
       currentPage: 0,
       searchResult: '',
       pageCount: 0,
-      apiKey: 'AIzaSyDCD3PxYjfsbMWBrAEEPIx8vnmf_1b0Fpo'
+      apiKey: 'AIzaSyDCD3PxYjfsbMWBrAEEPIx8vnmf_1b0Fpo',
+      isToastOpen: false,
+      toastText: '',
+      toastTitle: ''
     }
 
     this.hadlerChange = this.hadlerChange.bind(this);
@@ -63,7 +67,7 @@ class App extends React.Component {
   addBookToFavorites(book) {
     if (this.state.favorites !== null && this.state.favorites !== undefined && this.state.favorites !== '') {
       this.setState(previousState => ({
-        favorites: [...previousState.favorites, book]
+        favorites: [...previousState.favorites, book], isToastOpen: true, toastText: 'Book successfully add to favorites!', toastTitle: book?.volumeInfo?.title + ' add to favorites'
       }))
     }
   }
@@ -73,7 +77,7 @@ class App extends React.Component {
     var index = array.indexOf(book)
     if (index !== -1) {
       array.splice(index, 1);
-      this.setState({ favorites: array });
+      this.setState({ favorites: array, isToastOpen: true, toastText: 'Book successfully removed from favorites!', toastTitle: book?.volumeInfo?.title + ' removed from favorites' });
     }
   }
 
@@ -119,12 +123,23 @@ class App extends React.Component {
     return (
       <>
         <Navbar bg="dark">
-          <NavbarBrand style={{ color: 'white', fontWeight: 'bold' }}>Books Search</NavbarBrand>
-          <Nav>
+          <NavbarBrand>Books Search</NavbarBrand>
+          <Nav className="nav-items">
             <NavLink onClick={this.handlerIsSearch} >Search</NavLink>
             <NavLink onClick={this.handlerIsSearch} >Favorites</NavLink>
           </Nav>
         </Navbar>
+          <footer className="footer">
+            <div className="footer-content">
+              <Toast onClose={() => this.setState({ isToastOpen: false })} show={this.state.isToastOpen} delay={6000} autohide>
+                <Toast.Header>
+                  <strong className="mr-auto">{this.state.toastTitle}</strong>
+                </Toast.Header>
+                <Toast.Body>{this.state.toastText}</Toast.Body>
+              </Toast>
+            </div>
+              
+          </footer>
         {this.state.isSearch ? this.renderSearch() : this.renderFavorites()}
       </>
     )

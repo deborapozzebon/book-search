@@ -15,7 +15,7 @@ class App extends React.Component {
       favorites: [],
       book: '',
       offset: 0,
-      bookPerPage: 10,
+      bookPerPage: 14,
       currentPage: 0,
       searchResult: '',
       pageCount: 0,
@@ -88,18 +88,18 @@ class App extends React.Component {
         <form onSubmit={this.receivedData}>
           <div className="form-group">
             <input type="text" className="form-control" placeholder="Book name" onChange={this.hadlerChange} />
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
           </div>
-          <button type="submit">Search</button>
         </form>
         <Books books={this.state.searchResult} favorites={this.addBookToFavorites} isFavoriteContext={false} />
         <ReactPaginate
-          previousLabel={"prev"}
-          nextLabel={"next"}
+          previousLabel={"<"}
+          nextLabel={">"}
           breakLabel={"..."}
           breakClassName={"break-me"}
           pageCount={this.state.pageCount}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={2}
           onPageChange={this.handlePageClick}
           containerClassName={"pagination"}
           subContainerClassName={"pages pagination"}
@@ -111,17 +111,18 @@ class App extends React.Component {
 
   renderFavorites() {
     return (
-      <div>
-        <div className="container">
+      <React.Fragment>
+        <div className="container my-2">
+          <h2>Favorites Books</h2>
           <Books books={this.state.favorites} isFavoriteContext={true} removeFavorite={this.removeBookFromFavorites} />
         </div>
-      </div>
+      </React.Fragment>
     )
   }
 
   render() {
     return (
-      <>
+      <React.Fragment>
         <Navbar bg="dark">
           <NavbarBrand>Books Search</NavbarBrand>
           <Nav className="nav-items">
@@ -129,19 +130,18 @@ class App extends React.Component {
             <NavLink onClick={this.handlerIsSearch} >Favorites</NavLink>
           </Nav>
         </Navbar>
-          <footer className="footer">
-            <div className="footer-content">
-              <Toast onClose={() => this.setState({ isToastOpen: false })} show={this.state.isToastOpen} delay={6000} autohide>
-                <Toast.Header>
-                  <strong className="mr-auto">{this.state.toastTitle}</strong>
-                </Toast.Header>
-                <Toast.Body>{this.state.toastText}</Toast.Body>
-              </Toast>
-            </div>
-              
-          </footer>
+        <footer className="footer">
+          <div className="footer-content">
+            <Toast onClose={() => this.setState({ isToastOpen: false })} show={this.state.isToastOpen} delay={6000} autohide>
+              <Toast.Header>
+                <strong className="mr-auto">{this.state.toastTitle}</strong>
+              </Toast.Header>
+              <Toast.Body>{this.state.toastText}</Toast.Body>
+            </Toast>
+          </div>
+        </footer>
         {this.state.isSearch ? this.renderSearch() : this.renderFavorites()}
-      </>
+      </React.Fragment>
     )
   }
 }

@@ -69,8 +69,8 @@ class Books extends React.Component {
                         <div className="col-sm">
                             {this.props.books.map((book, i) => {
                                 return (
-                                    <a class="thumbnail" className="bk-thumb" onClick={(event) => this.handlerOpenModal(event, book)}>
-                                        <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.title} />
+                                    <a key={i} className="bk-thumb" onClick={(event) => this.handlerOpenModal(event, book)}>
+                                        <img src={book?.volumeInfo?.imageLinks?.thumbnail} alt={book?.title} />
                                     </a>
                                 )
                             })}

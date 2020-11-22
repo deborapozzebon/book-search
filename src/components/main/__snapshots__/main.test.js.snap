@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 2 1`] = `
+Array [
+  <nav
+    className="navbar navbar-expand navbar-light bg-dark"
+  >
+    <span
+      className="navbar-brand"
+    >
+      Books Search
+    </span>
+    <div
+      className="nav-items navbar-nav"
+      onKeyDown={[Function]}
+    >
+      <a
+        className="nav-link"
+        data-rb-event-key={null}
+        href="#"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+      >
+        Search
+      </a>
+      <a
+        className="nav-link"
+        data-rb-event-key={null}
+        href="#"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+      >
+        Favorites
+      </a>
+    </div>
+  </nav>,
+  <footer
+    className="footer"
+  >
+    <div
+      className="footer-content"
+    />
+  </footer>,
+  <div
+    className="container"
+  >
+    <form
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group mt-2"
+      >
+        <input
+          className="form-control mt-2"
+          data-testid="search-input"
+          onChange={[Function]}
+          placeholder="Book name"
+          type="text"
+        />
+        <button
+          className="btn btn-primary mt-2"
+          data-testid="search-button"
+          type="submit"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+    <ul
+      className="pagination"
+    >
+      <li
+        className="previous disabled"
+      >
+        <a
+          aria-disabled="true"
+          aria-label="Previous page"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          &lt;
+        </a>
+      </li>
+      <li
+        className="next"
+      >
+        <a
+          aria-disabled="false"
+          aria-label="Next page"
+          onClick={[Function]}
+          onKeyPress={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          &gt;
+        </a>
+      </li>
+    </ul>
+  </div>,
+]
+`;

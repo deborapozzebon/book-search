@@ -1,19 +1,19 @@
 import React from 'react';
 import axios from 'axios';
-import './App.css';
-import Books from './books/books.js';
+import './main.css';
+import Books from '../books/books.js';
 import ReactPaginate from 'react-paginate';
 import { NavbarBrand, Navbar, NavLink, Nav } from 'react-bootstrap';
 import Toast from 'react-bootstrap/Toast';
+import Search from '../search/search';
 
-class App extends React.Component {
+class Main extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isSearch: true,
       favorites: [],
-      book: '',
       offset: 0,
       bookPerPage: 14,
       currentPage: 0,
@@ -34,8 +34,7 @@ class App extends React.Component {
     this.removeBookFromFavorites = this.removeBookFromFavorites.bind(this);
   }
 
-  hadlerChange(event) {
-    const book = event.target.value;
+  hadlerChange(book) {
     this.setState({ book: book });
   }
 
@@ -84,14 +83,15 @@ class App extends React.Component {
   renderSearch() {
     return (
       <div className="container">
-        <br />
-        <form onSubmit={this.receivedData}>
-          <div className="form-group">
-            <input type="text" className="form-control" placeholder="Book name" onChange={this.hadlerChange} />
-            <button type="submit" class="btn btn-primary mt-2">Search</button>
-          </div>
-        </form>
-        <Books books={this.state.searchResult} favorites={this.addBookToFavorites} isFavoriteContext={false} />
+        <Search 
+          hadlerChange={this.hadlerChange} 
+          hadlerSubmit={this.receivedData} 
+        />
+        <Books 
+          books={this.state.searchResult} 
+          favorites={this.addBookToFavorites} 
+          isFavoriteContext={false} 
+        />
         <ReactPaginate
           previousLabel={"<"}
           nextLabel={">"}
@@ -146,4 +146,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Main;

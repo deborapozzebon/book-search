@@ -32,8 +32,6 @@ npm install npm@latest -g
 
 ### Instalação
 
-https://www.linkedin.com/in/d%C3%A9bora-pozzebon-b9883194
-
 1. Criar uma credencial de chave de API para ter acesso aos livros da api do google. Para isso: 
 
 2. Acesse: https://console.developers.google.com/apis/library/books.googleapis.com?q=Books&id=2027a432-a940-4665-830e-313e62a311f4&project=steel-watch-295920

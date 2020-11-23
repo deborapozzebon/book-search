@@ -7,6 +7,8 @@ import { NavbarBrand, Navbar, NavLink, Nav } from 'react-bootstrap';
 import Toast from 'react-bootstrap/Toast';
 import Search from '../search/search';
 
+const APIKEY = 'AIzaSyDCD3PxYjfsbMWBrAEEPIx8vnmf_1b0Fpo';
+
 class Main extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +21,7 @@ class Main extends React.Component {
       currentPage: 0,
       searchResult: '',
       pageCount: 0,
-      apiKey: 'AIzaSyDCD3PxYjfsbMWBrAEEPIx8vnmf_1b0Fpo',
+      apiKey: APIKEY,
       isToastOpen: false,
       toastText: '',
       toastTitle: ''

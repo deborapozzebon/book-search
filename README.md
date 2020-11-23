@@ -6,6 +6,7 @@
 
 <!--ts-->
    * [Sobre o projeto](#sobre-o-projeto)
+      * [Funcionalidades](#funcionalidades)
       * [Construído com](#construído-com)
       * [Requisitos](#requisitos)
       * [Instalação](#instalação)
@@ -16,6 +17,17 @@
 ## Sobre o projeto
 
 Através desta aplicação é possível consultar o conteúdo da API Books do Google. Informe uma palavra chave e encontre livros relacionados. Ao clicar em cada uma das imagens dos livros, é possível ter uma descrição completa do livro e seu título. Caso deseje, é possível adicionar este livro aos favoritos. Estando no contexto dos livros favoritos, é possível remover os livros desta lista.
+
+### Funcionalidades
+#### Pesquisar por livros
+![Pesquisar](https://user-images.githubusercontent.com/29635702/99922416-43315d00-2d0f-11eb-8d12-0adcedd39f3c.png)
+
+#### Visualizar descrição e título do livro + Adicionar aos favoritos
+![adicionar-favoritos](https://user-images.githubusercontent.com/29635702/99922419-462c4d80-2d0f-11eb-9c02-f613d8eee2a4.png)
+
+#### Visualizar livros favoritos + Remover livro dos favoritos
+![remover-favoritos](https://user-images.githubusercontent.com/29635702/99922420-475d7a80-2d0f-11eb-928b-fc21d9cd95ff.png)
+
 
 ### Construído com 
 
